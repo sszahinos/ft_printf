@@ -55,7 +55,7 @@ static int ft_select_flag(char flag, va_list args)
 	/*else if (flag == 'X')
 		printed = ft_put_upper_hex();*/
 	else if (flag == '%')
-		printed = ft_putchar('%', &printed);
+		printed = ft_putchar(flag);
 	return (printed);
 }
 
