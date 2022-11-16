@@ -34,32 +34,31 @@ int	ft_check_params(const char *str, va_list args)
 }
 */
 
-static void ft_select_print(char *str, int index, va_list args)
+static int ft_select_flag(char flag, va_list args)
 {
 	//const char *flags = "cspdiuxX%%";
 	int	printed;
 
 	printed = 0;
-	if (str[index + 1] == 'c')
+	if (flag == 'c')
 		printed = ft_putchar(va_arg(args, char));
-	else if (str[index + 1] == 's')
+	else if (flag == 's')
 		printed = ft_putstr(va_arg(args, char *));
-	else if (str[index + 1] == 'p')
-		printed = ft_putptr(va_arg(args, char *));
-	else if (str[index + 1] == 'd' || str[index + 1] == 'i')
+	else if (flag == 'p')
+		printed = ft_putptr(va_arg(args, void *));
+	else if (flag == 'd' || flag == 'i')
 		printed = ft_putnbr(va_arg(args, int));
-	/*else if (str[index + 1] == 'i')
-		printed = ft_putnbr((char *)arg, &printed);*/
-	else if (str[index + 1] == 'u') // unsigned dec?
-		return (¿¿¿???);
-	else if (str[index + 1] == 'x')
-		printed = ft_put_lower_hex((char *)arg, &printed);
-	else if (str[index + 1] == 'X')
-		printed = ft_put_upper_hex((char *)arg, &printed);
-	else if (str[index + 1] == '%')
+	else if (flag == 'u') // unsigned int?
+		printed = ft_putuint(va_arg(args, unsigned int));
+	else if (flag == 'x' || flag == 'X')
+		printed = ft_put_hex(va_arg(args, char *), flag);
+	/*else if (flag == 'X')
+		printed = ft_put_upper_hex();*/
+	else if (flag == '%')
 		printed = ft_putchar('%', &printed);
 	return (printed);
 }
+
 /*
 char	ft_get_flag(char *str, int index)
 {
@@ -72,13 +71,17 @@ char	ft_get_flag(char *str, int index)
 int ft_printf(const char *str, ...)
 {
 	int	printed;
+	int	printed_returned;
 
 	printed = 0;
 	va_start(args, count);
 	while (str[i])
 	{
 		//flag = ft_get_flag(str, i); //busca lo que hay a la derecha si existe. si es una flag, la devuelve, si no, otra cosa (null)?
-		printed += ft_select_print(str, i, args);
+		printed_returned = ft_select_flag(str + i, args);
+		if (printed_returned == -1)
+			break ;
+		printed += printed_returned;
 		i++;
 	}
 	va_end(args);
