@@ -41,15 +41,15 @@ static void ft_select_print(char *str, int index, va_list args)
 
 	printed = 0;
 	if (str[index + 1] == 'c')
-		printed = ft_putchar((char)arg, &printed);
+		printed = ft_putchar(va_arg(args, char));
 	else if (str[index + 1] == 's')
-		printed = ft_putstr((char *)arg, &printed);
+		printed = ft_putstr(va_arg(args, char *));
 	else if (str[index + 1] == 'p')
-		printed = ft_putptr(arg, &printed);
-	else if (str[index + 1] == 'd')
-		printed = ft_putdouble((char *)arg, &printed);
-	else if (str[index + 1] == 'i')
-		printed = ft_putnbr((char *)arg, &printed);
+		printed = ft_putptr(va_arg(args, char *));
+	else if (str[index + 1] == 'd' || str[index + 1] == 'i')
+		printed = ft_putnbr(va_arg(args, int));
+	/*else if (str[index + 1] == 'i')
+		printed = ft_putnbr((char *)arg, &printed);*/
 	else if (str[index + 1] == 'u') // unsigned dec?
 		return (¿¿¿???);
 	else if (str[index + 1] == 'x')
@@ -57,7 +57,7 @@ static void ft_select_print(char *str, int index, va_list args)
 	else if (str[index + 1] == 'X')
 		printed = ft_put_upper_hex((char *)arg, &printed);
 	else if (str[index + 1] == '%')
-		return (ft_putchar('%', &printed));
+		printed = ft_putchar('%', &printed);
 	return (printed);
 }
 /*
