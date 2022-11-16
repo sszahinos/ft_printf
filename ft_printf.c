@@ -47,9 +47,9 @@ static int ft_select_flag(char flag, va_list args)
 	else if (flag == 'p')
 		printed = ft_putptr(va_arg(args, void *));
 	else if (flag == 'd' || flag == 'i')
-		printed = ft_putnbr(va_arg(args, int));
+		printed = ft_putnbr(va_arg(args, int), 0);
 	else if (flag == 'u') // unsigned int?
-		printed = ft_putuint(va_arg(args, unsigned int));
+		printed = ft_putnbr(va_arg(args, unsigned int), 1);
 	else if (flag == 'x' || flag == 'X')
 		printed = ft_put_hex(va_arg(args, char *), flag);
 	/*else if (flag == 'X')

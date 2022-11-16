@@ -93,4 +93,3 @@ int	ft_putnbr(int n, int is_uint)
 }
 /*END PUTNBR*/
 
-int	ft_putuint();
