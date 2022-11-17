@@ -68,13 +68,34 @@ char	ft_get_flag(char *str, int index)
 	}
 }*/
 
+int	ft_count_args(char const *str)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i] && str[i + 1])
+	{
+		if (str[i] == '%' && ft_strchr("cspdiuxX%", (int)str[i]))
+			count++;
+		i++;
+	}
+	return (count);
+}
+
 int ft_printf(const char *str, ...)
 {
+	va_list	args;
+	int	arg_count;
+	int	i;
 	int	printed;
 	int	printed_returned;
 
 	printed = 0;
-	va_start(args, count);
+	arg_count = ft_count_args(str);
+	va_start(args, arg_count);
+	i = 0;
 	while (str[i])
 	{
 		//flag = ft_get_flag(str, i); //busca lo que hay a la derecha si existe. si es una flag, la devuelve, si no, otra cosa (null)?
