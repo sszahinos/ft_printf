@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putbase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 10:53:30 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/18 17:28:15 by sersanch         ###   ########.fr       */
+/*   Created: 2022/11/18 16:50:08 by sersanch          #+#    #+#             */
+/*   Updated: 2022/11/18 17:28:17 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "../include/libft.h"
 
-# define UPPER_HEXA = "0123456789ABCDEF"
-# define LOWER_HEXA = "0123456789abcdef"
+int	ft_puthexa(int num, char flag)
+{
+	int	temp;
+	int	printed;
 
-int	ft_putchar(char c);
-int	ft_putstr(char *s);
-int	ft_putnbr(int n, int is_uint);
-
-#endif
+	printed = 0;
+	temp = num % 16;
+	while (temp >= 16)
+	{
+		
+	}
+	iddf (temp < 16)
+	{
+		printed = ft_putchar(UPPER_HEXA[temp]);
+		if (printed == -1)
+			return (-1);
+	}
+}
