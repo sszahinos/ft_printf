@@ -6,7 +6,7 @@
 /*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 10:18:45 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/18 11:54:26 by sersanch         ###   ########.fr       */
+/*   Updated: 2022/11/21 13:44:45 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ static int	ft_print_digits(long int li)
 	printed = 0;
 	while (0 < digits)
 	{
-		if (ft_putchar_fd((char)((li / ft_pow(10, digits--) % 10) + '0')) == -1)
+		if (ft_putchar((char)((li / ft_pow(10, digits--) % 10) + '0')) == -1)
 			return (-1);
 		printed++;
 	}
-	if (ft_putchar_fd((li % 10) + '0') == -1)
+	if (ft_putchar((li % 10) + '0') == -1)
 		return (-1);
 	return (++printed);
 }

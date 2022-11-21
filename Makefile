@@ -6,19 +6,20 @@
 #    By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 09:56:12 by sersanch          #+#    #+#              #
-#    Updated: 2022/11/21 09:41:26 by sersanch         ###   ########.fr        #
+#    Updated: 2022/11/21 13:43:46 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ##### VARIABLES #####
-NAME	= libftprintf.a
+NAME		= libftprintf.a
+LIBFT_NAME	= libft.a 
 
 HEADER	= libftprintf.h
 INCLUDE	= -I 
 SRC_DIR	= src/
 OBJ_DIR	= obj/
 INC_DIR = include/
-LBF_DIR = ./utils/libft
+LBF_DIR = utils/libft
 
 CFLAGS	= -Wall -Wextra -Werror
 NORM	= norminette -R CheckForbiddenSourceHeader
@@ -54,8 +55,8 @@ all: make_libft $(NAME)
 	@echo "$(CYAN)$< $(GREEN)✓$(RESET)"
 
 $(NAME): $(SRC_OBJS)
-
-	copiar .a generado en libft en . y cambia nombre a $(NAME)
+	@cp $(LBF_DIR)$(LIBFT_NAME) ./$(NAME)
+#	copiar .a generado en libft en . y cambia nombre a $(NAME)
 	@$(AR) $(NAME) $(SRC_OBJS)
 	@echo "$(BOLD)$(LMAGENTA)SRC $(GREEN)compilated succesfully!$(RESET)"
 

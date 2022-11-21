@@ -6,7 +6,7 @@
 #    By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 11:30:33 by sersanch          #+#    #+#              #
-#    Updated: 2022/11/21 09:31:07 by sersanch         ###   ########.fr        #
+#    Updated: 2022/11/21 15:18:21 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME	= libft.a
 
 HEADER	= libft.h
 INCLUDE	= -I 
+PATH	= utils/libft
 SRC_DIR	= src
 OBJ_DIR	= obj
 DEP_DIR = dep
@@ -23,6 +24,7 @@ INC_DIR	= include
 CFLAGS	= -Wall -Wextra -Werror
 NORM	= norminette -R CheckForbiddenSourceHeader
 RM		= rm -f
+RMALL	= rm -rf
 AR		= ar -rcs
 MKDIR	= mkdir -p
 MV		= mv -f
@@ -48,30 +50,34 @@ SRC_OBJS = $(SRC_FILES:.c=.o)
 SRC_DEPS = $(SRC_FILES:.c=.d)
 
 ##### RULES #####
-all: folders $(NAME)
+all: $(NAME)
+	@make folders
 
 ./$(SRC_DIR)/%.o: $(SRC_DIR)/%.c Makefile
-	$(CC) $(CFLAGS) -MMD $(INCLUDE) ./$(INC_DIR)/$(HEADER) -c $< -o $@
+	@$(CC) $(CFLAGS) -MMD $(INCLUDE) ./$(INC_DIR)/$(HEADER) -c $< -o $@
 	@echo "$(CYAN)$< $(GREEN)✓$(RESET)"
 
 $(NAME): $(SRC_OBJS)
 	@$(AR) $(NAME) $(SRC_OBJS)
 	@make folders
-	@move_files
-	@echo "$(BOLD)$(LMAGENTA)SRC $(GREEN)compilated succesfully!$(RESET)"
+	@make movefiles
+	@touch $(NAME) 
+	@echo "$(BOLD)$(LMAGENTA)$(NAME) $(GREEN)compilated succesfully!$(RESET)"
 
 clean:
 	@$(RM) $(SRC_OBJS) $(SRC_DEPS) 
 	@echo "$(YELLOW)Objects and dependencies deleted.$(RESET)"
 
 fclean: clean
-	@$(RM) $(NAME) 
+	@$(RM) $(NAME)
+	@$(RMALL) ./$(SRC_DIR)/$(OBJ_DIR) ./$(SRC_DIR)/$(DEP_DIR)
 	@echo "$(CYAN)$(NAME) $(YELLOW)and $(CYAN)$(BNUS) $(YELLOW)deleted.$(RESET)"
 
 re: fclean all
 
 norm:
 	$(NORM)
+
 push:
 	git add ft_*.c && git commit -m "Functions updated" && git push
 
@@ -79,10 +85,10 @@ folders:
 	@$(MKDIR) ./$(SRC_DIR)/$(OBJ_DIR)
 	@$(MKDIR) ./$(SRC_DIR)/$(DEP_DIR)
 
-move_files:
-	$(MV) ./$(SRC_DIR)/*.o ./$(SRC_DIR)/$(OBJ_DIR)/
-	$(MV) ./$(SRC_DIR)/*.d ./$(SRC_DIR)/$(DEP_DIR)/
+movefiles:
+	@$(MV) ./$(SRC_DIR)/*.o ./$(SRC_DIR)/$(OBJ_DIR)/
+	@$(MV) ./$(SRC_DIR)/*.d ./$(SRC_DIR)/$(DEP_DIR)/
 
 -include $(SRC_DEPS)
 
-.PHONY: all clean fclean re norm folders move_files
+.PHONY: all clean fclean re norm folders movefiles
