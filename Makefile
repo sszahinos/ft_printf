@@ -6,7 +6,7 @@
 #    By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 09:56:12 by sersanch          #+#    #+#              #
-#    Updated: 2022/11/18 11:30:57 by sersanch         ###   ########.fr        #
+#    Updated: 2022/11/21 09:41:26 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ INCLUDE	= -I
 SRC_DIR	= src/
 OBJ_DIR	= obj/
 INC_DIR = include/
+LBF_DIR = ./utils/libft
 
 CFLAGS	= -Wall -Wextra -Werror
 NORM	= norminette -R CheckForbiddenSourceHeader
@@ -46,15 +47,20 @@ SRC_OBJS = $(SRC_FILES:.c=.o)
 SRC_DEPS = $(SRC_FILES:.c=.d)
 
 ##### RULES #####
-all: $(NAME)
+all: make_libft $(NAME)
 
 %.o: %.c Makefile
 	@$(CC) $(CFLAGS) -MMD $(INCLUDE) $(HEADER) -c $< -o $@
 	@echo "$(CYAN)$< $(GREEN)✓$(RESET)"
 
 $(NAME): $(SRC_OBJS)
+
+	copiar .a generado en libft en . y cambia nombre a $(NAME)
 	@$(AR) $(NAME) $(SRC_OBJS)
 	@echo "$(BOLD)$(LMAGENTA)SRC $(GREEN)compilated succesfully!$(RESET)"
+
+make_libft:
+	make -C $(LBF_DIR)
 
 clean:
 	@$(RM) $(SRC_OBJS) $(SRC_DEPS) 
@@ -77,4 +83,4 @@ folders:
 
 -include $(SRC_DEPS)
 
-.PHONY: all clean fclean re norm folders
+.PHONY: all clean fclean re norm folders make_libft

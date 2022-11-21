@@ -6,7 +6,7 @@
 #    By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 11:30:33 by sersanch          #+#    #+#              #
-#    Updated: 2022/11/18 16:02:13 by sersanch         ###   ########.fr        #
+#    Updated: 2022/11/21 09:31:07 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,15 +42,15 @@ SRC_FILES =	./$(SRC_DIR)/ft_putchar.c \
 			./$(SRC_DIR)/ft_putnbr.c
 
 ##### OBJECTS #####
-SRC_OBJS = ./$(SRC_DIR)/$(SRC_FILES:.c=.o)
+SRC_OBJS = $(SRC_FILES:.c=.o)
 
 ##### DEPENDENCIES #####
-SRC_DEPS = ./$(SRC_DIR)/$(SRC_FILES:.c=.d)
+SRC_DEPS = $(SRC_FILES:.c=.d)
 
 ##### RULES #####
 all: folders $(NAME)
 
-$(SRC_DIR)/%.o: $(SRC_DIR)/%.c Makefile
+./$(SRC_DIR)/%.o: $(SRC_DIR)/%.c Makefile
 	$(CC) $(CFLAGS) -MMD $(INCLUDE) ./$(INC_DIR)/$(HEADER) -c $< -o $@
 	@echo "$(CYAN)$< $(GREEN)✓$(RESET)"
 
