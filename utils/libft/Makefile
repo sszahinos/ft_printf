@@ -6,7 +6,7 @@
 #    By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 11:30:33 by sersanch          #+#    #+#              #
-#    Updated: 2022/11/21 15:18:21 by sersanch         ###   ########.fr        #
+#    Updated: 2022/11/21 16:56:04 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ SRC_DEPS = $(SRC_FILES:.c=.d)
 all: $(NAME)
 	@make folders
 
-./$(SRC_DIR)/%.o: $(SRC_DIR)/%.c Makefile
+./$(SRC_DIR)/%.o: ./$(SRC_DIR)/%.c Makefile
 	@$(CC) $(CFLAGS) -MMD $(INCLUDE) ./$(INC_DIR)/$(HEADER) -c $< -o $@
 	@echo "$(CYAN)$< $(GREEN)✓$(RESET)"
 
@@ -65,13 +65,14 @@ $(NAME): $(SRC_OBJS)
 	@echo "$(BOLD)$(LMAGENTA)$(NAME) $(GREEN)compilated succesfully!$(RESET)"
 
 clean:
-	@$(RM) $(SRC_OBJS) $(SRC_DEPS) 
-	@echo "$(YELLOW)Objects and dependencies deleted.$(RESET)"
+	#$(RM) $(SRC_DIR)/$(SRC_OBJS) $(SRC_DIR)/$(SRC_DEPS) 
+	$(RM) $(SRC_DIR)/$(OBJ_DIR) $(SRC_DIR)/$(DEP_DIR)
+	@echo "$(CYAN)$(NAME) $(YELLOW)objects and dependencies deleted.$(RESET)"
 
-fclean: clean
+fclean: #clean --> Clean executed on main Makefile
 	@$(RM) $(NAME)
-	@$(RMALL) ./$(SRC_DIR)/$(OBJ_DIR) ./$(SRC_DIR)/$(DEP_DIR)
-	@echo "$(CYAN)$(NAME) $(YELLOW)and $(CYAN)$(BNUS) $(YELLOW)deleted.$(RESET)"
+	@$(RMALL) ./$(PATH)/$(SRC_DIR)/$(OBJ_DIR) ./$(PATH)/$(SRC_DIR)/$(DEP_DIR)
+	@echo "$(CYAN)$(NAME) $(YELLOW)$(YELLOW)deleted.$(RESET)"
 
 re: fclean all
 
@@ -82,12 +83,12 @@ push:
 	git add ft_*.c && git commit -m "Functions updated" && git push
 
 folders:
-	@$(MKDIR) ./$(SRC_DIR)/$(OBJ_DIR)
-	@$(MKDIR) ./$(SRC_DIR)/$(DEP_DIR)
+	$(MKDIR) $(SRC_DIR)/$(OBJ_DIR)
+	@$(MKDIR) $(SRC_DIR)/$(DEP_DIR)
 
 movefiles:
-	@$(MV) ./$(SRC_DIR)/*.o ./$(SRC_DIR)/$(OBJ_DIR)/
-	@$(MV) ./$(SRC_DIR)/*.d ./$(SRC_DIR)/$(DEP_DIR)/
+	@$(MV) ./$(PATH)/$(SRC_DIR)/*.o ./$(PATH)/$(SRC_DIR)/$(OBJ_DIR)/
+	@$(MV) ./$(PATH)/$(SRC_DIR)/*.d ./$(PATH)/$(SRC_DIR)/$(DEP_DIR)/
 
 -include $(SRC_DEPS)
 
