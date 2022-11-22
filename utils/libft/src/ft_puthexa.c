@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putbase.c                                       :+:      :+:    :+:   */
+/*   ft_puthexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 16:50:08 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/18 17:28:17 by sersanch         ###   ########.fr       */
+/*   Created: 2022/11/22 15:26:06 by sersanch          #+#    #+#             */
+/*   Updated: 2022/11/22 15:43:52 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-int	ft_puthexa(int num, char flag)
+int	ft_puthexa(int num, char flag, int printed)
 {
-	int	temp;
-	int	printed;
+	int	aux;
 
-	printed = 0;
-	temp = num % 16;
-	while (temp >= 16)
+	if (num >= 16)
 	{
-		
-	}
-	iddf (temp < 16)
-	{
-		printed = ft_putchar(UPPER_HEXA[temp]);
-		if (printed == -1)
+		aux = ft_puthexa(num / 16, flag, printed);
+		if (aux == -1)
 			return (-1);
+		printed += aux;
 	}
+	if (flag == 'x')
+		aux = write(1, &LOWER_HEXA[num % 16], 1);
+	else
+		aux = write(1, &UPPER_HEXA[num % 16], 1);
+	if (aux == -1)
+		return (-1);
+	printed += aux;
+	return (printed);
+
 }
