@@ -6,7 +6,7 @@
 #    By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 11:30:33 by sersanch          #+#    #+#              #
-#    Updated: 2022/11/21 16:56:04 by sersanch         ###   ########.fr        #
+#    Updated: 2022/11/21 17:46:45 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ RM		= rm -f
 RMALL	= rm -rf
 AR		= ar -rcs
 MKDIR	= mkdir -p
-MV		= mv -f
+#MV		= mv -f
 
 #### FORMAT #####
 RESET		:= \033[0m
@@ -50,8 +50,8 @@ SRC_OBJS = $(SRC_FILES:.c=.o)
 SRC_DEPS = $(SRC_FILES:.c=.d)
 
 ##### RULES #####
-all: $(NAME)
-	@make folders
+all: folders $(NAME)
+#	@make folders
 
 ./$(SRC_DIR)/%.o: ./$(SRC_DIR)/%.c Makefile
 	@$(CC) $(CFLAGS) -MMD $(INCLUDE) ./$(INC_DIR)/$(HEADER) -c $< -o $@
@@ -59,14 +59,14 @@ all: $(NAME)
 
 $(NAME): $(SRC_OBJS)
 	@$(AR) $(NAME) $(SRC_OBJS)
-	@make folders
+#	@make folders
 	@make movefiles
 	@touch $(NAME) 
 	@echo "$(BOLD)$(LMAGENTA)$(NAME) $(GREEN)compilated succesfully!$(RESET)"
 
 clean:
 	#$(RM) $(SRC_DIR)/$(SRC_OBJS) $(SRC_DIR)/$(SRC_DEPS) 
-	$(RM) $(SRC_DIR)/$(OBJ_DIR) $(SRC_DIR)/$(DEP_DIR)
+	$(RMALL) $(SRC_DIR)/$(OBJ_DIR) $(SRC_DIR)/$(DEP_DIR)
 	@echo "$(CYAN)$(NAME) $(YELLOW)objects and dependencies deleted.$(RESET)"
 
 fclean: #clean --> Clean executed on main Makefile
@@ -87,8 +87,8 @@ folders:
 	@$(MKDIR) $(SRC_DIR)/$(DEP_DIR)
 
 movefiles:
-	@$(MV) ./$(PATH)/$(SRC_DIR)/*.o ./$(PATH)/$(SRC_DIR)/$(OBJ_DIR)/
-	@$(MV) ./$(PATH)/$(SRC_DIR)/*.d ./$(PATH)/$(SRC_DIR)/$(DEP_DIR)/
+	mv $(SRC_DIR)/*.o $(SRC_DIR)/$(OBJ_DIR)/*.o
+#	@mv ./$(SRC_DIR)/*.d ./$(SRC_DIR)/$(DEP_DIR)/
 
 -include $(SRC_DEPS)
 
