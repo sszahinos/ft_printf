@@ -6,7 +6,7 @@
 /*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:02:03 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/18 17:28:10 by sersanch         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:57:46 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ static int	ft_select_flag(char flag, va_list args)
 	else if (flag == 'u') // unsigned int?
 		printed = ft_putnbr(va_arg(args, unsigned int), 1);
 	else if (flag == 'x' || flag == 'X')
-		printed = ft_puthexa(va_arg(args, int), flag);
-	/*else if (flag == 'X')
-		printed = ft_put_upper_hex();*/
+		printed = ft_puthexa(va_arg(args, int), flag, 0);
 	else if (flag == '%')
 		printed = ft_putchar(flag);
 	return (printed);
