@@ -6,7 +6,7 @@
 #    By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 11:30:33 by sersanch          #+#    #+#              #
-#    Updated: 2022/11/22 18:16:39 by sersanch         ###   ########.fr        #
+#    Updated: 2022/11/22 18:37:07 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,6 @@ RM		= rm -f
 RMALL	= rm -rf
 AR		= ar -rcs
 MKDIR	= mkdir -p
-#MV		= mv -f
 
 #### FORMAT #####
 RESET		:= \033[0m
@@ -41,7 +40,10 @@ LMAGENTA	:= \033[95m
 ##### FILES #####
 SRC_FILES =	ft_putchar \
 			ft_putstr \
-			ft_putnbr
+			ft_putnbr \
+			ft_puthexa \
+			ft_puthexa_ptr \
+			ft_putptr
 
 #### NAMING #####
 SRC	= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC_FILES)))
@@ -86,6 +88,6 @@ folders:
 #	mv $(SRC_DIR)/*.o $(SRC_DIR)/$(OBJ_DIR)/*.o
 #	@mv ./$(SRC_DIR)/*.d ./$(SRC_DIR)/$(DEP_DIR)/
 
--include $(SRC_DEPS)
+-include $(DEP)
 
 .PHONY: all clean fclean re norm folders movefiles

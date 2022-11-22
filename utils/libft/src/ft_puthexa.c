@@ -6,11 +6,12 @@
 /*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 15:26:06 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/22 16:45:08 by sersanch         ###   ########.fr       */
+/*   Updated: 2022/11/22 18:39:18 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
+#include <unistd.h>
 
 int	ft_puthexa(unsigned int num, char flag, int printed)
 {
