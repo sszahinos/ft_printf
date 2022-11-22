@@ -6,7 +6,7 @@
 #    By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 11:30:33 by sersanch          #+#    #+#              #
-#    Updated: 2022/11/22 18:10:05 by sersanch         ###   ########.fr        #
+#    Updated: 2022/11/22 18:16:39 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ DEP	= $(addprefix $(SRC_DIR)/$(DEP_DIR)/, $(addsuffix .d, $(SRC_FILES)))
 ##### RULES #####
 all: folders $(NAME)
 
-$(SRC_DIR)/$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile 
+$(SRC_DIR)/$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/$(HEADER) Makefile 
 	@$(CC) $(CFLAGS) -MMD $(INCLUDE) ./$(INC_DIR)/$(HEADER) -c $< -o $@
 	@mv $(SRC_DIR)/$(OBJ_DIR)/$*.d $(SRC_DIR)/$(DEP_DIR)
 	@echo "$(CYAN)$< $(GREEN)✓$(RESET)"
