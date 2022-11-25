@@ -6,7 +6,7 @@
 #    By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 09:56:12 by sersanch          #+#    #+#              #
-#    Updated: 2022/11/21 17:46:47 by sersanch         ###   ########.fr        #
+#    Updated: 2022/11/25 09:28:14 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,7 @@ LMAGENTA	:= \033[95m
 
 
 ##### FILES #####
-SRC_FILES =	ft_isalpha.c \
-			ft_isdigit.c 
+SRC_FILES =	ft_printf.c 
 
 ##### OBJECTS #####
 SRC_OBJS = $(SRC_FILES:.c=.o)
@@ -61,7 +60,7 @@ $(NAME): $(SRC_OBJS)
 	@echo "$(BOLD)$(LMAGENTA)SRC $(GREEN)compilated succesfully!$(RESET)"
 
 make_libft:
-	make -C $(LBF_DIR)
+	@make -C $(LBF_DIR)
 
 clean:
 	@$(RM) $(SRC_OBJS) $(SRC_DEPS)

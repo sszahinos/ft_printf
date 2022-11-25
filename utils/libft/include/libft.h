@@ -6,7 +6,7 @@
 /*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 10:53:30 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/22 18:40:19 by sersanch         ###   ########.fr       */
+/*   Updated: 2022/11/25 09:25:28 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,8 @@
 int	ft_putchar(char c);
 int	ft_putstr(char *s);
 int	ft_putnbr(int n, int is_uint);
+int	ft_putptr(void *ptr);
+int	ft_puthexa(unsigned int num, char flag, int printed);
+int	ft_puthexa_ptr(unsigned long long int num, int printed);
 
 #endif
