@@ -6,7 +6,7 @@
 /*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 10:07:10 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/18 11:54:10 by sersanch         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:30:02 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	ft_putstr(char *s)
 {
 	int	printed;
-
+	
+	if (!s)
+		return (ft_putstr("(null)"));
 	printed = 0;
 	while (s[printed])
 	{

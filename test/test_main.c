@@ -76,12 +76,19 @@ int main(void)
 	c_ft = ft_printf("%X / %x\n", INT_MIN, INT_MIN);
 	printf("Printed: %d vs. %d\n", c_std, c_ft);
 
-	printf("\n13. Empty string\n");
+	printf("\n13. empty string\n");
 	c_std = printf("");
 	write(1, "\n", 1);
 	c_ft = ft_printf("");
 	write(1, "\n", 1);
-	printf("Printed: %d vs. %d\n", c_std, c_ft);
+	printf("printed: %d vs. %d\n", c_std, c_ft);
+	
+	printf("\n14. null string using %%s\n");
+	c_std = printf("%s", (char *)NULL);
+	write(1, "\n", 1);
+	c_ft = printf("%s", (char *)NULL);
+	write(1, "\n", 1);
+	printf("printed: %d vs. %d\n", c_std, c_ft);
 
 	printf("\nEND\n");
 	return (0);
