@@ -6,15 +6,15 @@
 /*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 10:18:45 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/28 11:21:53 by sersanch         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:42:34 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
-#include <stdio.h> //borrar
-static int ft_count_digits(long long int n)
+
+static int	ft_count_digits(long long int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (n > 0)
@@ -25,10 +25,10 @@ static int ft_count_digits(long long int n)
 	return (i);
 }
 
-static int ft_pow(int base, int power)
+static int	ft_pow(int base, int power)
 {
-	int i;
-	int result;
+	int	i;
+	int	result;
 
 	if (power == 0)
 		return (1);
@@ -43,7 +43,7 @@ static int	ft_print_digits(long long int li)
 {
 	int	digits;
 	int	printed;
-	
+
 	digits = ft_count_digits(li) - 1;
 	printed = 0;
 	while (0 < digits)
@@ -60,8 +60,8 @@ static int	ft_print_digits(long long int li)
 int	ft_putnbr(long long int n, int is_uint)
 {
 	long long int	li;
-	int			printed;
-	int			aux;
+	int				printed;
+	int				aux;
 
 	if (n == -2147483648 && !is_uint)
 		return (ft_putstr("-2147483648"));

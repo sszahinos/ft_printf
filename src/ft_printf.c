@@ -6,14 +6,13 @@
 /*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:02:03 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/28 11:16:27 by sersanch         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:46:51 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libftprintf.h"
 #include <stdarg.h>
-#include <unistd.h> //borrar
-#include <stdio.h> //borrar
+
 static int	ft_select_flag(char flag, va_list args)
 {
 	int	printed;
@@ -52,10 +51,10 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 			printed_returned = ft_select_flag(str[++i], args);
 		else
-			printed_returned = write(1, &(str[i]), 1);
+			printed_returned = ft_putchar(str[i]);
 		if (printed_returned == -1)
 			return (-1);
-		printed += printed_returned;	
+		printed += printed_returned;
 		i++;
 	}
 	va_end(args);
@@ -89,4 +88,3 @@ static int ft_check_args(char *str, va_list args)
 	
 	va_end(args_copy);
 }*/
-
