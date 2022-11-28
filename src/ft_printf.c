@@ -6,7 +6,7 @@
 /*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:02:03 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/28 11:02:33 by sersanch         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:16:27 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_select_flag(char flag, va_list args)
 	else if (flag == 'p')
 		printed = ft_putptr(va_arg(args, void *));
 	else if (flag == 'd' || flag == 'i')
-		printed = ft_putnbr(va_arg(args, int), 0);
+		printed = ft_putnbr((long long int)va_arg(args, int), 0);
 	else if (flag == 'u')
 		printed = ft_putnbr(va_arg(args, unsigned int), 1);
 	else if (flag == 'x' || flag == 'X')

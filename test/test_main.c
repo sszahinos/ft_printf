@@ -49,7 +49,7 @@ int main(void)
 	printf("Printed: %d vs. %d\n", c_std, c_ft);
 
 	printf("\n8. Uninitialized pointer %%p\n");
-	int test;
+	char *test = NULL;
 	c_std = printf("%p\n", &test);
 	c_ft = ft_printf("%p\n", &test);
 	printf("Printed: %d vs. %d\n", c_std, c_ft);
