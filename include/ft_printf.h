@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 10:56:03 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/28 09:27:55 by sersanch         ###   ########.fr       */
+/*   Created: 2022/11/28 12:07:21 by sersanch          #+#    #+#             */
+/*   Updated: 2022/11/28 12:07:39 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include "../utils/libft/include/libft.h"
 
