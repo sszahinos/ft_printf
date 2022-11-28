@@ -6,7 +6,7 @@
 #    By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 09:56:12 by sersanch          #+#    #+#              #
-#    Updated: 2022/11/28 10:37:57 by sersanch         ###   ########.fr        #
+#    Updated: 2022/11/28 12:01:15 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME		= libftprintf.a
 LBF_NAME	= libft.a 
 
-HEADER	= libftprintf.h
+HEADER	= ft_printf.h
 INCLUDE	= -I 
 SRC_DIR	= src
 OBJ_DIR	= obj
@@ -95,6 +95,12 @@ test:
 	@echo "$(GREEN)Test compiled$(RESET)"
 	@./a.out
 
+test_paco:
+	@echo "$(CYAN)Executing francinette $(YELLOW)standard $(CYAN)mode$(RESET)"
+	@/Users/sersanch/francinette/tester.sh -in
+	@echo "$(CYAN)Executing francinette $(YELLOW)strict $(CYAN)mode$(RESET)"
+	@/Users/sersanch/francinette/tester.sh -s -in
+
 -include $(SRC_DEPS)
 
-.PHONY: all clean fclean re norm folders make_libft folders import_utils test
+.PHONY: all clean fclean re norm folders make_libft folders import_utils test test_paco

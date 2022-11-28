@@ -6,11 +6,11 @@
 /*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:02:03 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/28 11:46:51 by sersanch         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:51:02 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libftprintf.h"
+#include "../include/ft_printf.h"
 #include <stdarg.h>
 
 static int	ft_select_flag(char flag, va_list args)
