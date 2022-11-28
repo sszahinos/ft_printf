@@ -6,7 +6,7 @@
 /*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 10:18:45 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/21 13:44:45 by sersanch         ###   ########.fr       */
+/*   Updated: 2022/11/28 11:12:12 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	ft_putnbr(int n, int is_uint)
 	int			printed;
 	int			aux;
 
+	if (n == -2147483648 && !is_uint)
+		return (ft_putstr("-2147483648"));
 	printed = 0;
 	aux = 0;
 	li = (long int)n;
@@ -76,10 +78,7 @@ int	ft_putnbr(int n, int is_uint)
 		}
 		li *= -1;
 	}
-	if (li == 0)
-		aux = ft_putchar('0'); //se podria quitar??
-	else
-		aux = ft_print_digits(li);
+	aux = ft_print_digits(li);
 	if (aux == -1)
 		return (-1);
 	printed += aux;

@@ -6,7 +6,7 @@
 #    By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 09:56:12 by sersanch          #+#    #+#              #
-#    Updated: 2022/11/25 16:44:23 by sersanch         ###   ########.fr        #
+#    Updated: 2022/11/28 10:37:57 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ OBJ_DIR	= obj
 DEP_DIR = dep
 INC_DIR = include
 LBF_DIR = utils/libft
+TST_DIR = test
 
 CFLAGS	= -Wall -Wextra -Werror
 NORM	= norminette -R CheckForbiddenSourceHeader
@@ -41,6 +42,7 @@ LMAGENTA	:= \033[95m
 
 ##### FILES #####
 SRC_FILES =	ft_printf
+TST_FILES = test_main.c
 
 SRC	= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC_FILES)))
 OBJ	= $(addprefix $(SRC_DIR)/$(OBJ_DIR)/, $(addsuffix .o, $(SRC_FILES)))
@@ -51,12 +53,12 @@ all: make_libft folders $(NAME)
 
 $(SRC_DIR)/$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/$(HEADER) $(LBF_DIR)/$(LBF_NAME) Makefile
 	@$(CC) $(CFLAGS) -MMD $(INCLUDE) $(INC_DIR)/$(HEADER) -c $< -o $@
-	@echo "Entra$(CYAN)$< $(GREEN)✓$(RESET)"
+	@echo "$(CYAN)$< $(GREEN)✓$(RESET)"
 
 $(NAME): $(OBJ)
-	@cp $(LBF_DIR)/$(LBF_NAME) ./$(NAME)
+	@make import_utils
 	@$(AR) $(NAME) $(OBJ)
-	@echo "$(BOLD)$(LMAGENTA)SRC $(GREEN)compilated succesfully!$(RESET)"
+	@echo "$(BOLD)$(LMAGENTA)$(NAME) $(GREEN)compilated succesfully!$(RESET)"
 
 make_libft:
 	@make -C $(LBF_DIR)
@@ -75,6 +77,7 @@ re: fclean all
 
 norm:
 	$(NORM)
+
 push:
 	git add *.c Makefile *.h && git commit -m "Functions updated" && git push
 
@@ -82,6 +85,16 @@ folders:
 	@$(MKDIR) $(SRC_DIR)/$(OBJ_DIR)
 	@$(MKDIR) $(SRC_DIR)/$(DEP_DIR)
 
+import_utils:
+	@cp $(LBF_DIR)/$(LBF_NAME) ./$(NAME)
+	@echo "$(GREEN)Imported $(CYAN)$(LBF_NAME)$(RESET)"
+
+test:
+	@make re
+	@$(CC) $(CFLAGS) $(NAME) $(TST_DIR)/$(TST_FILES)
+	@echo "$(GREEN)Test compiled$(RESET)"
+	@./a.out
+
 -include $(SRC_DEPS)
 
-.PHONY: all clean fclean re norm folders make_libft folders
+.PHONY: all clean fclean re norm folders make_libft folders import_utils test

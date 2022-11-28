@@ -6,7 +6,7 @@
 #    By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 11:30:33 by sersanch          #+#    #+#              #
-#    Updated: 2022/11/22 18:37:07 by sersanch         ###   ########.fr        #
+#    Updated: 2022/11/28 09:38:44 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SRC_FILES =	ft_putchar \
 			ft_putnbr \
 			ft_puthexa \
 			ft_puthexa_ptr \
-			ft_putptr
+			ft_putptr \
+			ft_strchr
 
 #### NAMING #####
 SRC	= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC_FILES)))
