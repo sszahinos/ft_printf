@@ -6,7 +6,7 @@
 #    By: sersanch <sersanch@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 09:56:12 by sersanch          #+#    #+#              #
-#    Updated: 2023/04/19 11:30:42 by sersanch         ###   ########.fr        #
+#    Updated: 2023/04/19 11:35:33 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,13 +66,11 @@ $(NAME): $(OBJ)
 	@echo "$(BOLD)$(LMAGENTA)$(NAME) $(GREEN)compilated succesfully!$(RESET)"
 
 clean:
-	@make clean -C $(LBF_DIR)
 	@$(RMALL) $(SRC_DIR)/$(OBJ_DIR) $(SRC_DIR)/$(DEP_DIR)
 	@echo "$(CYAN)$(NAME) $(YELLOW)objects and dependencies deleted.$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@make fclean -C $(LBF_DIR)
 	@echo "$(CYAN)$(NAME)$(YELLOW) deleted.$(RESET)"
 
 re: fclean all
