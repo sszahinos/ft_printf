@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
+/*   By: sersanch <sersanch@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 10:07:10 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/28 11:45:25 by sersanch         ###   ########.fr       */
+/*   Created: 2022/11/18 10:06:36 by sersanch          #+#    #+#             */
+/*   Updated: 2023/04/19 11:23:24 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "ft_printf.h"
+#include <unistd.h>
 
-int	ft_putstr(char *s)
+int	ft_putchar(char c)
 {
-	int	printed;
-
-	if (!s)
-		return (ft_putstr("(null)"));
-	printed = 0;
-	while (s[printed])
-	{
-		if (ft_putchar(s[printed]) == -1)
-			return (-1);
-		printed++;
-	}
-	return (printed);
+	return (write(1, &c, 1));
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
+/*   By: sersanch <sersanch@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 10:18:45 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/28 11:42:34 by sersanch         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:23:43 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "ft_printf.h"
 
 static int	ft_count_digits(long long int n)
 {

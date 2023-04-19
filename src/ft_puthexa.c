@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_puthexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
+/*   By: sersanch <sersanch@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 15:26:06 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/28 11:34:07 by sersanch         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:23:37 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "ft_printf.h"
 #include <unistd.h>
 
 int	ft_puthexa(unsigned int num, char flag, int printed)

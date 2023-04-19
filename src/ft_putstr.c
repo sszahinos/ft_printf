@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
+/*   By: sersanch <sersanch@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 09:35:58 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/28 09:36:54 by sersanch         ###   ########.fr       */
+/*   Created: 2022/11/18 10:07:10 by sersanch          #+#    #+#             */
+/*   Updated: 2023/04/19 11:23:52 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
-{
-	int	i;
+#include "ft_printf.h"
 
-	i = 0;
-	while (s[i])
+int	ft_putstr(char *s)
+{
+	int	printed;
+
+	if (!s)
+		return (ft_putstr("(null)"));
+	printed = 0;
+	while (s[printed])
 	{
-		if ((unsigned char)s[i] == (unsigned char)c)
-			return ((char *)s + i);
-		i++;
+		if (ft_putchar(s[printed]) == -1)
+			return (-1);
+		printed++;
 	}
-	if ((unsigned char)s[i] == (unsigned char)c)
-		return ((char *)s + i);
-	return (0);
+	return (printed);
 }

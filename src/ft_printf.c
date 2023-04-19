@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+        */
+/*   By: sersanch <sersanch@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:02:03 by sersanch          #+#    #+#             */
-/*   Updated: 2022/11/28 11:51:02 by sersanch         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:22:28 by sersanch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 #include <stdarg.h>
 
 static int	ft_select_flag(char flag, va_list args)
@@ -60,31 +60,3 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (printed);
 }
-
-/*
-static int	ft_count_args(char const *str)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (str[i] && str[i + 1])
-	{
-		if (str[i] == '%' && ft_strchr("cspdiuxX", (int)str[i]))
-			count++;
-		i++;
-	}
-	return (count);
-}
-
-static int ft_check_args(char *str, va_list args)
-{
-	int		arg_count;
-	va_list args_copy;
-
-	arg_count = ft_count_args(str);
-	va_copy(args_copy, args);
-	
-	va_end(args_copy);
-}*/

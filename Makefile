@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sersanch <sersanch@student.42barcel>       +#+  +:+       +#+         #
+#    By: sersanch <sersanch@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 09:56:12 by sersanch          #+#    #+#              #
-#    Updated: 2022/11/28 12:01:15 by sersanch         ###   ########.fr        #
+#    Updated: 2023/04/19 11:30:42 by sersanch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME		= libftprintf.a
 LBF_NAME	= libft.a 
 
 HEADER	= ft_printf.h
-INCLUDE	= -I 
+INCLUDE	= -I
 SRC_DIR	= src
 OBJ_DIR	= obj
 DEP_DIR = dep
@@ -41,27 +41,29 @@ LMAGENTA	:= \033[95m
 
 
 ##### FILES #####
-SRC_FILES =	ft_printf
-TST_FILES = test_main.c
+SRC_FILES =	ft_printf \
+			ft_putchar \
+			ft_puthexa \
+			ft_puthexa_ptr \
+			ft_putnbr \
+			ft_putptr \
+			ft_putstr \
+			ft_strchr
 
 SRC	= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC_FILES)))
 OBJ	= $(addprefix $(SRC_DIR)/$(OBJ_DIR)/, $(addsuffix .o, $(SRC_FILES)))
 DEP	= $(addprefix $(SRC_DIR)/$(DEP_DIR)/, $(addsuffix .d, $(SRC_FILES)))
 
 ##### RULES #####
-all: make_libft folders $(NAME)
+all: folders $(NAME)
 
-$(SRC_DIR)/$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/$(HEADER) $(LBF_DIR)/$(LBF_NAME) Makefile
-	@$(CC) $(CFLAGS) -MMD $(INCLUDE) $(INC_DIR)/$(HEADER) -c $< -o $@
+$(SRC_DIR)/$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/$(HEADER) Makefile
+	@$(CC) $(CFLAGS) -MMD $(INCLUDE)$(INC_DIR) -c $< -o $@
 	@echo "$(CYAN)$< $(GREEN)✓$(RESET)"
 
 $(NAME): $(OBJ)
-	@make import_utils
 	@$(AR) $(NAME) $(OBJ)
 	@echo "$(BOLD)$(LMAGENTA)$(NAME) $(GREEN)compilated succesfully!$(RESET)"
-
-make_libft:
-	@make -C $(LBF_DIR)
 
 clean:
 	@make clean -C $(LBF_DIR)
@@ -75,32 +77,10 @@ fclean: clean
 
 re: fclean all
 
-norm:
-	$(NORM)
-
-push:
-	git add *.c Makefile *.h && git commit -m "Functions updated" && git push
-
 folders:
 	@$(MKDIR) $(SRC_DIR)/$(OBJ_DIR)
 	@$(MKDIR) $(SRC_DIR)/$(DEP_DIR)
 
-import_utils:
-	@cp $(LBF_DIR)/$(LBF_NAME) ./$(NAME)
-	@echo "$(GREEN)Imported $(CYAN)$(LBF_NAME)$(RESET)"
-
-test:
-	@make re
-	@$(CC) $(CFLAGS) $(NAME) $(TST_DIR)/$(TST_FILES)
-	@echo "$(GREEN)Test compiled$(RESET)"
-	@./a.out
-
-test_paco:
-	@echo "$(CYAN)Executing francinette $(YELLOW)standard $(CYAN)mode$(RESET)"
-	@/Users/sersanch/francinette/tester.sh -in
-	@echo "$(CYAN)Executing francinette $(YELLOW)strict $(CYAN)mode$(RESET)"
-	@/Users/sersanch/francinette/tester.sh -s -in
-
 -include $(SRC_DEPS)
 
-.PHONY: all clean fclean re norm folders make_libft folders import_utils test test_paco
+.PHONY: all clean fclean re folders
